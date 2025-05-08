@@ -44,7 +44,7 @@ public class Main {
                 opcao = "None";
         }
         System.out.println(opcao);
-        System.out.println("sdf");
+        
 
 
         // Estabelecer a conexão
