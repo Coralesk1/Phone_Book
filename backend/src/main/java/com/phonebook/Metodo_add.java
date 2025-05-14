@@ -1,3 +1,5 @@
+package com.phonebook;
+
 import java.sql.Connection; //representa a conexão com o banco.
 import java.sql.DriverManager; // gerencia o acesso ao banco (usado para criar conexões).
 import java.sql.PreparedStatement; //permite executar comandos SQL com segurança.
