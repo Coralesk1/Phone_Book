@@ -1,4 +1,12 @@
 .background{
   width: 1322px;
   height: 710px;
+  position: absolute;
+}
+.iconphone{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50px;
+  right: 100px;
 }
