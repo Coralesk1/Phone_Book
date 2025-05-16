@@ -1,12 +1,73 @@
+/* Backgroud */
 .background{
   width: 1322px;
   height: 710px;
   position: absolute;
+
 }
-.iconphone{
+/* Icone do titulo do site */
+.icon_phone{
   width: 100px;
   height: 100px;
   position: absolute;
-  top: 50px;
-  right: 100px;
+  margin-top: 7px;
+  right: 1200px;
 }
+/* Texto do titulo do site */
+.icon_text{
+  position: absolute;
+  color: aliceblue;
+  margin-top: 34px;
+  right: 950px;
+  font-size: 40px;
+}
+/* Area do CRUD */
+.Crud_area {
+  width: 500px;
+  height: 460px;
+  background-color: rgba(194, 0, 0, 0.247);
+  border: 2px solid rgb(255, 0, 0);
+  position: absolute;
+  top: 140px;
+  left: 180px;
+  backdrop-filter: blur(3px);
+  border-radius: 30px;
+  text-align: center;
+}
+.text_crud {
+  color: rgb(255, 255, 255);
+  font-size: 30px;
+  text-align: center;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.botoes-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 150px;
+
+}
+
+.crud_button {
+  width: 200px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.719);
+  border-radius: 10px;
+  border: 1px solid rgb(255, 0, 0);
+  font-size: 23px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: rgb(0, 0, 0);
+}
+
+.crud_button:hover {
+  background-color: #ffffff50;
+}
+
+
