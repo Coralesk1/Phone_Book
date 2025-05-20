@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.phonebook.api.Metodo_add;
 import com.phonebook.api.dtos.UsuarioDTO;
 
 @RestController /* isso quer dizer que é uma API REST — ela responde com dados (texto, JSON) */
@@ -18,17 +17,12 @@ public class UsuarioController { /* Significa que tudo que estiver dentro dessa 
         return "Inicio";
     }
 
+    
     @PostMapping("/add")
     public String hello(@RequestBody UsuarioDTO usuario) { /* O @RequestBody indica que o Spring Boot espera um JSON no corpo da requisição, que será convertido e enviado automaticamente para um objeto UsuarioDTO.
  */
-        Metodo_add.add_contato(
-            usuario.getFirstName(), 
-            usuario.getLastName(), 
-            usuario.getEmail(), 
-            usuario.getNumPhone(), 
-            usuario.getDdd()
-            );
-
+        System.out.println("Contato recebido:");
+        System.out.println(usuario.getFirstName() + " " + usuario.getLastName() + " | " + usuario.getEmail() + " | " + usuario.getNumPhone() + " (" + usuario.getDdd() + ")");
         return "Usuário recebido";
     }
 }
