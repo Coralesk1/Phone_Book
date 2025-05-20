@@ -2,17 +2,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
+	<parent> <!-- Você está dizendo que o seu projeto herda configurações do Spring Boot. -->
+		<groupId>org.springframework.boot</groupId> <!-- tipo o "pacote base" -->
+		<artifactId>spring-boot-starter-parent</artifactId>  
 		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	<groupId>com.phonebook</groupId>
-	<artifactId>api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>api</name>
+	</parent> 
+	<!-- Essas tags definem a identidade do projeto. -->
+	<groupId>com.phonebook</groupId> <!-- tipo o "pacote base" -->
+	<artifactId>api</artifactId>  <!-- nome da aplicação -->
+	<version>0.0.1-SNAPSHOT</version>  <!-- versão atual -->
+	<name>api</name>  <!-- nome que aparece nos logs -->
 	<description>Api project for Spring Boot</description>
+
 	<url/>
 	<licenses>
 		<license/>
@@ -26,34 +28,41 @@
 		<tag/>
 		<url/>
 	</scm>
+
 	<properties>
-		<java.version>17</java.version>
+		<java.version>17</java.version> <!-- Define a versão do Java usada na compilação. -->
 	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+
+	<dependencies> <!-- Aqui começam as bibliotecas que o Maven vai baixar automaticamente da internet (repositórios Maven) para o seu projeto usar. -->
+		<dependency> <!-- Começa uma nova dependência. -->
+			<groupId>org.springframework.boot</groupId> <!-- Diz de onde vem a dependência (grupo do Spring Boot). -->
+			<artifactId>spring-boot-starter-web</artifactId> <!-- Essa aqui traz tudo que você precisa pra criar APIs REST:Servidor embutido (Tomcat), Controle de rotas (com @RestController, @RequestMapping, etc),Conversão de JSON (Jackson),Logging básico. -->
 		</dependency>
 
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
+		<dependency> <!-- Começa uma nova dependência. -->
+			<groupId>com.mysql</groupId> <!-- Grupo do MySQL. -->
+			<artifactId>mysql-connector-j</artifactId> <!-- Nome da biblioteca que permite Java conversar com banco MySQL. -->
+			<scope>runtime</scope> <!--  Diz que essa dependência só é usada em tempo de execução, não na hora de compilar. -->
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+
+		<dependency> <!-- Começa a definição de outra dependência. -->
+			<groupId>org.springframework.boot</groupId> <!-- Vem do Spring Boot. -->
+			<artifactId>spring-boot-starter-test</artifactId> <!-- Conjunto de ferramentas para fazer testes automatizados -->
+			<scope>test</scope> <!-- Essa dependência só é usada quando rodar testes, não afeta o código principal. -->
 		</dependency>
-	</dependencies>
+
+	</dependencies> <!-- Fecha o bloco de dependências. -->
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+			<plugin> <!-- Plugins no Maven são ferramentas que executam tarefas específicas durante o ciclo de vida do projeto. -->
+				<groupId>org.springframework.boot</groupId> <!-- Grupo do plugin: o Spring Boot. -->
+				<artifactId>spring-boot-maven-plugin</artifactId> <!--  Nome do plugin. Ele permite que você use o comando: ./mvnw spring-boot:run para rodar sua aplicação direto sem precisar configurar servidor. -->
 			</plugin>
 		</plugins>
 	</build>
 
 </project>
+
+<!-- pom.xml é o coração do Maven no seu projeto Java.
+É aqui que você define as dependências, plugins, versão do Java, configurações de build e outras coisas importantes pro funcionamento do projeto. -->
