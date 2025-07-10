@@ -7,9 +7,17 @@ public class ModelPhoneBook {
     private int numPhone;
     private int ddd;
 
-    // Construtor vazio (obrigatório para o Spring/Jackson)
-    public ModelPhoneBook() {}
+    public ModelPhoneBook(String firstName, String lastName, String email, int numPhone, int ddd) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.numPhone = numPhone;
+        this.ddd = ddd;
+    }
 
+  /*  public ModelPhoneBook() {
+
+    }*/
 
     public String getFirstName() {
         return firstName;
@@ -45,4 +53,5 @@ public class ModelPhoneBook {
     public void setDdd(int ddd) {
         this.ddd = ddd;
     }
+
 }
