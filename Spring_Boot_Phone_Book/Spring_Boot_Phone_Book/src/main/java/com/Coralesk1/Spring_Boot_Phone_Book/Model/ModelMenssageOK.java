@@ -7,7 +7,6 @@ public class ModelMenssageOK {
     public ModelMenssageOK(String menssage){
         this.menssage = menssage;
     }
-
     public String getmensage() {
         return menssage;
     }

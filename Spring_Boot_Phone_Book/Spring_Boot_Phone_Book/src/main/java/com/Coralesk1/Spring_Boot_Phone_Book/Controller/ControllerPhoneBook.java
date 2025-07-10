@@ -2,6 +2,8 @@ package com.Coralesk1.Spring_Boot_Phone_Book.Controller;
 
 import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelMenssageOK;
 import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
+import jakarta.validation.Valid;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -13,9 +15,8 @@ public class ControllerPhoneBook {
     }
 
     @PostMapping("/create")
-    public ModelMenssageOK create(@RequestBody ModelPhoneBook contact) {
-        // Aqui o Spring já criou e preencheu o objeto com base no JSON recebido
-        return new ModelMenssageOK("Contact added successfully");
+    public ModelMenssageOK create(@RequestBody @Valid ModelPhoneBook contact ) { // Aqui o Spring já criou e preencheu o objeto com base no JSON recebido
+        return new ModelMenssageOK("Contact created successfully");
     }
 
 }
