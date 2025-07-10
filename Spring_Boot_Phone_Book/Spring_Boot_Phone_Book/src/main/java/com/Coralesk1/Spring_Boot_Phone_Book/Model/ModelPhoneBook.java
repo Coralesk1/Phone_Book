@@ -3,10 +3,12 @@ package com.Coralesk1.Spring_Boot_Phone_Book.Model;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 
 public class ModelPhoneBook {
     @NotBlank(message = "First name is mandatory")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "The first name cannot contain numbers or spaces")
     private String firstName;
     @NotBlank(message = "Last name is mandatory")
     private String lastName;

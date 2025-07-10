@@ -6,29 +6,33 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErroResponse> handleValidationExceptions(MethodArgumentNotValidException ex){
-        String message = ex.getBindingResult().getFieldErrors().get(0).getDefaultMessage();
-        /*getBindingResult() Recupera o resultado da validação-
-        * getFieldErrors() - Obtém a lista de erros nos campos
-        * get(0) - Pega o primeiro erro da lista
-        * getDefaultMessage() - Retorna a mensagem de erro padrão desse erro do @NotBlank*/
-        ErroResponse erro = new ErroResponse(message,
-                HttpStatus.BAD_REQUEST.value()
-        );
-        return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<Map<String, Object>> handleValidationException(MethodArgumentNotValidException ex) {
+        Map<String, Object> response = new HashMap<>(); //armazena os erros
+        List<String> errors =
+                ex.getBindingResult().getFieldErrors().stream()
+                .map(field -> field.getDefaultMessage())
+                .collect(Collectors.toList());
+                /*getBindingResult() Recupera o resultado da validação-
+                 *getFieldErrors() - Obtém a lista de erros nos campos
+                * stream() - transforma a lista em um stream (estrutura para processar dados de forma funcional).
+                * .map(field -> field.getDefaultMessage()) - extrai a mensagem de erro personalizada de cada campo.
+                * .collect(Collectors.toList()) -  transforma isso em uma lista de strings com os erros.*/
+        response.put("message", "Validation failed");
+        response.put("errors", errors);
+        response.put("erro", 400);
+
+        return ResponseEntity.badRequest().body(response);
     }
-    
-    @ExceptionHandler(ErroException.class) //captura exceções do tipo ErroException
-    public ResponseEntity<ErroResponse> handleErrorException(ErroException e) {
-        ErroResponse erro = new ErroResponse(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST.value()
-        );
-        return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
-    }
+    /*ELE TA     "The first name cannot contain numbers or spaces"
+    ] MODIFICA O REGEX SÓ PRA PEGA NUMEROS*/
 
 }
