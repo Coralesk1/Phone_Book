@@ -8,19 +8,23 @@ import jakarta.validation.constraints.Pattern;
 
 public class ModelPhoneBook {
     @NotBlank(message = "First name is mandatory")
-    @Pattern(regexp = "^[a-zA-Z]+$", message = "The first name cannot contain numbers or spaces")
+    @Pattern(regexp = "^[^0-9\\s]+$", message = "The field cannot contain numbers or spaces")
     private String firstName;
     @NotBlank(message = "Last name is mandatory")
+    @Pattern(regexp = "^[^0-9\\s]+$", message = "The field cannot contain numbers or spaces")
     private String lastName;
     @NotBlank(message = "Email is mandatory")
     @Email (message = "Invalid email format")
     private String email;
     @NotNull(message = "Phone number is mandatory")
-    private int numPhone;
-    @NotNull(message = "DDD is mandatory")
-    private int ddd;
+    @Pattern(regexp = "^\\d{4,5}-\\d{4}$", message = "The phone number must be in the format 1234-5678 or 91234-5678")
+    private String numPhone;
 
-    public ModelPhoneBook(String firstName, String lastName, String email, int numPhone, int ddd) {
+    @NotNull(message = "DDD is mandatory")
+    @Pattern(regexp = "^\\d{2}$", message = "The area code must contain exactly two numeric digits")
+    private String ddd;
+
+    public ModelPhoneBook(String firstName, String lastName, String email, String numPhone, String ddd) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -49,17 +53,17 @@ public class ModelPhoneBook {
         this.email = email;
     }
 
-    public int getNumPhone() {
+    public String getNumPhone() {
         return numPhone;
     }
-    public void setNumPhone(int numPhone) {
+    public void setNumPhone(String numPhone) {
         this.numPhone = numPhone;
     }
 
-    public int getDdd() {
+    public String getDdd() {
         return ddd;
     }
-    public void setDdd(int ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 

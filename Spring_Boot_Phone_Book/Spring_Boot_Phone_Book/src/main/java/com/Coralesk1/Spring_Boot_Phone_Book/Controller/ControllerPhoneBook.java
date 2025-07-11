@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class ControllerPhoneBook {
     @GetMapping("/list")
     public ModelPhoneBook list() {
-        return new ModelPhoneBook("Gustavo", "Silva", "gustavoemailcom", 123456789, 41);
+        return new ModelPhoneBook("Gustavo", "Silva", "gustavoemailcom", "123456789", "41");
     }
 
     @PostMapping("/create")
