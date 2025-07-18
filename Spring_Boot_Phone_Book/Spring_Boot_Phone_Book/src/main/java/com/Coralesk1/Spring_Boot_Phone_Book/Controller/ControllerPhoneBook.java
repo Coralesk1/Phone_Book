@@ -22,6 +22,8 @@ public class ControllerPhoneBook {
 
     @PostMapping("/create")
     public ModelMenssageOK create(@RequestBody @Valid ModelPhoneBook contact ) { // Aqui o Spring já criou e preencheu o objeto com base no JSON recebido
+
+        System.out.println(" RECEBI O POST!");
         contactService.create(contact);
         return new ModelMenssageOK("Contact created successfully");
     }

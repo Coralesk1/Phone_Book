@@ -11,8 +11,8 @@ public class ContactService {
     @Autowired //O Spring injeta automaticamente o ContactRepository aqui, não precisando instanciar nada manualmente
     private ContactRepository contactRepository;
 
-    public ModelPhoneBook create(ModelPhoneBook contact){// passando o tipo do parametro como objeto que contem o json
-        return contactRepository.save(contact); // salva no banco
+    public void create(ModelPhoneBook contact){// passando o tipo do parametro como objeto que contem o json
+        contactRepository.save(contact); // salva no banco
     }
 
 
