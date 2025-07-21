@@ -10,12 +10,15 @@ public class ModelPhoneBook {
     @NotBlank(message = "First name is mandatory")
     @Pattern(regexp = "^[^0-9\\s]+$", message = "The field cannot contain numbers or spaces")
     private String firstName;
+
     @NotBlank(message = "Last name is mandatory")
     @Pattern(regexp = "^[^0-9\\s]+$", message = "The field cannot contain numbers or spaces")
     private String lastName;
+
     @NotBlank(message = "Email is mandatory")
     @Email (message = "Invalid email format")
     private String email;
+
     @NotNull(message = "Phone number is mandatory")
     @Pattern(regexp = "^\\d{4,5}-\\d{4}$", message = "The phone number must be in the format 1234-5678 or 91234-5678")
     private String numPhone;
@@ -30,7 +33,7 @@ public class ModelPhoneBook {
         this.email = email;
         this.numPhone = numPhone;
         this.ddd = ddd;
-    }
+    } /*ver o construtor vazio */
 
     public String getFirstName() {
         return firstName;
