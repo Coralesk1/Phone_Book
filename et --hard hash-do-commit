@@ -1,9 +1,0 @@
-[33mefb4de4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m tentando achar o problema do por que os dados não estão sendo enviados para o banco
-[33m421b8d2[m implementando o contactService para conseguir fazer com que o repository e o controller conversem
-[33m077dc2c[m criabdo os arquivos para fazer funcionar o docker
-[33m40d3627[m tratando os errors separadamente com Bean Validation
-[33mf881e6b[m tratando as exception de erro
-[33m3a90a01[m Get e Post
-[33maa44f33[m Arquitetura MVC e Logica Post
-[33mf338af6[m Add pasta do Spring Boot
-[33m3bd45e9[m first commit
