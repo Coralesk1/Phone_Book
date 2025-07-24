@@ -3,7 +3,9 @@ package com.Coralesk1.Spring_Boot_Phone_Book.Repository;
 import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface  RepositoryPhoneBook extends JpaRepository<ModelPhoneBook, Long> {}
+public interface  RepositoryPhoneBook extends JpaRepository<ModelPhoneBook, Long> {
+    boolean isPresent();
+}
 /* interface - Cria uma interface Java que representa o repositório.
 *Extends - Herda todos os métodos prontos do JpaRepository.
 * sendo os tipos para a class JpaRepository

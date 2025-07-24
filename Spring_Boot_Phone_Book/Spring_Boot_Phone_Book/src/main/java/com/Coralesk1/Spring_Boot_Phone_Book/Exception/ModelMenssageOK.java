@@ -1,4 +1,4 @@
-package com.Coralesk1.Spring_Boot_Phone_Book.Model;
+package com.Coralesk1.Spring_Boot_Phone_Book.Exception;
 
 public class ModelMenssageOK {
 
