@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: phone-book
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_boot_phone_book?useTimezone=true&severTimezone=UTC
+    username: root
+    password: 3272Guscoral
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+    show-sql: false
+
