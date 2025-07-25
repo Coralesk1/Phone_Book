@@ -6,6 +6,7 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Repository.RepositoryPhoneBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.cert.CertPathBuilder;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,14 +16,23 @@ public class ServicePhoneBook { //Aplicar regras e lógica de negócio
     @Autowired
     private RepositoryPhoneBook repository;
 
+    // Lista todos os contatos
     public List<ModelPhoneBook> listContact() {
         return repository.findAll();
     }
-    public ModelMenssageOK CreateContact(ModelPhoneBook contact) { // Aqui o Spring já criou e preencheu o objeto com base no JSON recebido
+
+    public ModelMenssageOK createContact(ModelPhoneBook contact) {
         repository.save(contact);
         return new ModelMenssageOK("Contact successfully created");
     }
 
-
-
+    // Busca contato por id, retorna Optional para tratar ausência
+    public Optional<ModelPhoneBook> getContactById(Long Id ){
+        return repository.findById(Id);
+    }
+    
+    // Verifica se contato existe pelo id
+    public boolean existsById(Long id) {
+        return repository.existsById(id);
+    }
 }

@@ -4,7 +4,7 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface  RepositoryPhoneBook extends JpaRepository<ModelPhoneBook, Long> {
-    boolean isPresent();
+    boolean existsByEmail(String email);
 }
 /* interface - Cria uma interface Java que representa o repositório.
 *Extends - Herda todos os métodos prontos do JpaRepository.
