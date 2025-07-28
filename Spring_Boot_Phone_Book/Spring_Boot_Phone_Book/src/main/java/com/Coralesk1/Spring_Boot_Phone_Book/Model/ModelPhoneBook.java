@@ -26,13 +26,13 @@ public class ModelPhoneBook implements Serializable { // Serializable - Permite 
     private String lastName;
 
     @NotBlank(message = "Email is mandatory")
-    @Email(message = "Invalid email format")
+    @Email(message = "Invalid email format or this email already exists")
     @Column(name = "email", nullable = false, unique = true, length = 150)
     private String email;
 
     @NotNull(message = "Phone number is mandatory")
     @Pattern(regexp = "^\\d{4,5}-\\d{4}$", message = "The phone number must be in the format 1234-5678 or 91234-5678")
-    @Column(name = "phone_number", nullable = false, length = 10)
+    @Column(name = "phone_number", nullable = false, unique = true,  length = 10)
     private String numPhone;
 
     @NotNull(message = "DDD is mandatory")
@@ -47,8 +47,7 @@ public class ModelPhoneBook implements Serializable { // Serializable - Permite 
         this.numPhone = numPhone;
         this.ddd = ddd;
     }
-    public ModelPhoneBook() {
-    }
+    public ModelPhoneBook() { } //construtor vazio para o @Requestbody
     public String getFirstName() {
         return firstName;
     }

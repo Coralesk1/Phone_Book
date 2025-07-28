@@ -5,8 +5,6 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Repository.RepositoryPhoneBook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.security.cert.CertPathBuilder;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,8 +35,16 @@ public class ServicePhoneBook { //Aplicar regras e lógica de negócio
         }
         return contact;
     }
-    public Optional<ModelPhoneBook> editContactById(Long Id ){
+    public Optional<ModelPhoneBook> updateContact(Long Id, ModelPhoneBook contact){
+        ModelPhoneBook existingContact = repository.findById(Id).get();
 
+        existingContact.setFirstName(contact.getFirstName());
+        existingContact.setLastName(contact.getLastName());
+        existingContact.setEmail(contact.getEmail());
+        existingContact.setNumPhone(contact.getNumPhone());
+        existingContact.setDdd(contact.getDdd());
+
+        return Optional.of(repository.save(existingContact));
     }
     
     // Verifica se contato existe pelo id

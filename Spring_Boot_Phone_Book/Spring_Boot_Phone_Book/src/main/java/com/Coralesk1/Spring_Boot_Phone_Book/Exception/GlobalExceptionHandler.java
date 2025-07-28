@@ -1,38 +1,37 @@
 package com.Coralesk1.Spring_Boot_Phone_Book.Exception;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    //trata erros de validação
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, Object>> handleValidationException(MethodArgumentNotValidException ex) {
-        Map<String, Object> response = new HashMap<>(); //armazena os erros
-        List<String> errors =
-                ex.getBindingResult().getFieldErrors().stream()
-                .map(field -> field.getDefaultMessage())
-                .collect(Collectors.toList());
-                /*getBindingResult() Recupera o resultado da validação-
-                 *getFieldErrors() - Obtém a lista de erros nos campos
-                * stream() - transforma a lista em um stream (estrutura para processar dados de forma funcional).
-                * .map(field -> field.getDefaultMessage()) - extrai a mensagem de erro personalizada de cada campo.
-                * .collect(Collectors.toList()) -  transforma isso em uma lista de strings com os erros.*/
-        response.put("message", "Validation failed");
-        response.put("errors", errors);
-        response.put("erro", 400);
-
-        return ResponseEntity.badRequest().body(response);
+    public ResponseEntity<Map<String, String>> handleValidationErrors(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getFieldErrors().forEach(error ->
+                errors.put(error.getField(), error.getDefaultMessage())
+        );
+        return ResponseEntity.badRequest().body(errors);
     }
-    /*ELE TA     "The first name cannot contain numbers or spaces"
-    ] MODIFICA O REGEX SÓ PRA PEGA NUMEROS*/
 
+    //trata erros de duplicação
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Map<String, String>> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        Map<String, String> error = new HashMap<>();
+
+        error.put("error", "This email or phone number is already registered");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(error); // HTTP 409
+    }
 }
+
+
+

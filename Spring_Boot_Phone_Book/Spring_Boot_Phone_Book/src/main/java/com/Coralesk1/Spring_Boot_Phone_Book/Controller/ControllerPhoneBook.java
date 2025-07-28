@@ -49,10 +49,12 @@ public class ControllerPhoneBook {
         return ResponseEntity.ok("delete contact");
     }
     @PutMapping("/{id}")
-    public ResponseEntity<String> editById (@PathVariable Long id){
+    public ResponseEntity<String> editById (@PathVariable Long id, @RequestBody @Valid ModelPhoneBook contact){
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
+        servicePhoneBook.updateContact(id, contact);
+        return ResponseEntity.ok(" update contact");
 
 
     }
