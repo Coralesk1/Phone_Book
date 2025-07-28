@@ -30,9 +30,21 @@ public class ServicePhoneBook { //Aplicar regras e lógica de negócio
     public Optional<ModelPhoneBook> getContactById(Long Id ){
         return repository.findById(Id);
     }
+    public Optional<ModelPhoneBook> deleteContactById(Long Id ){
+        Optional<ModelPhoneBook> contact = repository.findById(Id);
+        if (contact.isPresent()){
+            repository.deleteById(Id);
+        }
+        return contact;
+    }
+    public Optional<ModelPhoneBook> editContactById(Long Id ){
+
+    }
     
     // Verifica se contato existe pelo id
     public boolean existsById(Long id) {
         return repository.existsById(id);
     }
+
+
 }

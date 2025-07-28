@@ -7,24 +7,24 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/contact")
+@RequestMapping("/api/contacts")
 public class ControllerPhoneBook {
 
     @Autowired
     private ServicePhoneBook servicePhoneBook;
 
-    // Lista todos contatos - aqui sem path variable
-    @GetMapping("/list")
+    // Lista todos contatos
+    @GetMapping
     public List<ModelPhoneBook> list() {
         return servicePhoneBook.listContact();
     }
 
-    @PostMapping("/create")
+    //cria um contato
+    @PostMapping
     public ModelMenssageOK create(@RequestBody @Valid ModelPhoneBook contact) {
         return servicePhoneBook.createContact(contact);
     }
@@ -32,11 +32,36 @@ public class ControllerPhoneBook {
     // Busca contato por ID com tratamento de resposta HTTP
     @GetMapping("/{id}")
     public ResponseEntity<ModelPhoneBook> getById(@PathVariable Long id) {
+        //ResponseEntity - controle total sobre a resposta que o seu endpoint retorna.
         if (!servicePhoneBook.existsById(id)) {
-            return ResponseEntity.notFound().build();  // Retorna 404
+            return ResponseEntity.notFound().build();  // Retorna 404 - Página Não Encontrada"
         }
 
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
-        return ResponseEntity.ok(contact.get()); // Retorna 200 com contato
+        return ResponseEntity.ok(contact.get()); // Retorna 200 com contato <- ResponseEntity
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteById (@PathVariable Long id){
+        if (!servicePhoneBook.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        servicePhoneBook.deleteContactById(id);
+        return ResponseEntity.ok("delete contact");
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> editById (@PathVariable Long id){
+        if (!servicePhoneBook.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+
+    }
+
+
 }
+
+
+/*validações a fazer:
+* email igual
+* se tem um id que n existe ele retorna 1 */
+
