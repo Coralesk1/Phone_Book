@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SpringBootPhoneBookApplication {
-	//http://localhost:8080/contact/list
+	//http://localhost:8080/api/contacts/
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootPhoneBookApplication.class, args);
 	}

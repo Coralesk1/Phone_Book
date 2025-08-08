@@ -40,30 +40,24 @@ public class ControllerPhoneBook {
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
         return ResponseEntity.ok(contact.get()); // Retorna 200 com contato <- ResponseEntity
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteById (@PathVariable Long id){
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         servicePhoneBook.deleteContactById(id);
-        return ResponseEntity.ok("delete contact");
+        return ResponseEntity.ok("Delete contact");
     }
+
     @PutMapping("/{id}")
     public ResponseEntity<String> editById (@PathVariable Long id, @RequestBody @Valid ModelPhoneBook contact){
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         servicePhoneBook.updateContact(id, contact);
-        return ResponseEntity.ok(" update contact");
-
+        return ResponseEntity.ok(" Update contact");
 
     }
-
-
 }
-
-
-/*validações a fazer:
-* email igual
-* se tem um id que n existe ele retorna 1 */
 
