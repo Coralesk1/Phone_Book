@@ -5,8 +5,11 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Service.ServicePhoneBook;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +21,7 @@ public class ControllerPhoneBook {
     private ServicePhoneBook servicePhoneBook;
 
     // Lista todos contatos
-    @GetMapping
+    @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE }) //colocando os param que o get aceita
     public List<ModelPhoneBook> list() {
         return servicePhoneBook.listContact();
     }
@@ -30,7 +33,7 @@ public class ControllerPhoneBook {
     }
 
     // Busca contato por ID com tratamento de resposta HTTP
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<ModelPhoneBook> getById(@PathVariable Long id) {
         //ResponseEntity - controle total sobre a resposta que o seu endpoint retorna.
         if (!servicePhoneBook.existsById(id)) {
@@ -38,10 +41,16 @@ public class ControllerPhoneBook {
         }
 
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
-        return ResponseEntity.ok(contact.get()); // Retorna 200 com contato <- ResponseEntity
+        if (contact.isPresent()){
+            ModelPhoneBook mpb = contact.get();
+            mpb.setBirthDay(new Date());
+            return ResponseEntity.ok(mpb);// Retorna 200 com contato <- ResponseEntity
+        }
+        return null;
     }
 
-    @DeleteMapping("/{id}")
+    //deleta o contato
+    @DeleteMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<String> deleteById (@PathVariable Long id){
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
@@ -50,7 +59,8 @@ public class ControllerPhoneBook {
         return ResponseEntity.ok("Delete contact");
     }
 
-    @PutMapping("/{id}")
+    //edita um contato por id
+    @PutMapping(value = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     public ResponseEntity<String> editById (@PathVariable Long id, @RequestBody @Valid ModelPhoneBook contact){
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
