@@ -8,13 +8,15 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.hateoas.RepresentationModel;
+
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "contact") //nome da tabela no banco
 @JsonPropertyOrder({"id", "firstName", "lastName", "email", "numPhone", "ddd"}) // ordena o JSON
-public class ModelPhoneBook implements Serializable {
+public class ModelPhoneBook extends RepresentationModel<ModelPhoneBook> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

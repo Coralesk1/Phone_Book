@@ -1,9 +1,14 @@
 package com.Coralesk1.Spring_Boot_Phone_Book.Service;
 
+import com.Coralesk1.Spring_Boot_Phone_Book.Controller.ControllerPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Exception.ModelMenssageOK;
 import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Repository.RepositoryPhoneBook;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
+import org.springframework.hateoas.EntityModel;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -25,9 +30,10 @@ public class ServicePhoneBook { //Aplicar regras e lógica de negócio
     }
 
     // Busca contato por id, retorna Optional para tratar ausência
-    public Optional<ModelPhoneBook> getContactById(Long Id ){
-        return repository.findById(Id);
+    public Optional<ModelPhoneBook> getContactById(Long id) {
+        return repository.findById(id);
     }
+
     public Optional<ModelPhoneBook> deleteContactById(Long Id ){
         Optional<ModelPhoneBook> contact = repository.findById(Id);
         if (contact.isPresent()){
