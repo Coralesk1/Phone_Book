@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service //diz que essa class é o service
-public class ServicePhoneBook { //Aplicar regras e lógica de negócio
+@Service // Diz que essa class é o service
+public class ServicePhoneBook { // Aplicar regras e lógica de negócio
 
     @Autowired
     private RepositoryPhoneBook repository;
