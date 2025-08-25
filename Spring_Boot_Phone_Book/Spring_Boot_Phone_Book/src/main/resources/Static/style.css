@@ -1,5 +1,5 @@
-h1.title { /*  font-family:  'Indie Flower', serif; fonte dos textos */
-    font-size: 70px;
+.title { /*  font-family:  'Indie Flower', serif; fonte dos textos */
+    font-size: 65px;
     font-family:  'Rock Salt', cursive;
     width: 530px;
     margin: 0 auto; 
@@ -14,15 +14,20 @@ body {
 .options {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 30px;
 }
 .div-form-option {
     background-color: aquamarine;
     width: 300px;
     height: auto;
+    margin-left: 180px;
 }
 .button-options {
+    padding: 15px;
+    width: auto;
+    font-size: 20px;
     border-radius: 10px;
-    
+    border-color: blue;
+    border-style: dashed;
 }
 
