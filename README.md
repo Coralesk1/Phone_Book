@@ -9,10 +9,10 @@ O principal objetivo do projeto é não apenas fornecer uma ferramenta funcional
 
 ## Funcionalidades
 - `Funcionalidade 1`: Adicionar novos contatos
-- `Funcionalidade 1`: Listar contato especifico
-- `Funcionalidade 1`: Listar todos os contatos
-- `Funcionalidade 1`: Atualizar informações de um contato
-- `Funcionalidade 1`: Remover contatos pelo id
+- `Funcionalidade 2`: Listar contato especifico
+- `Funcionalidade 3`: Listar todos os contatos
+- `Funcionalidade 4`: Atualizar informações de um contato
+- `Funcionalidade 5`: Remover contatos pelo id
 ## 📁 Acesso ao projeto
 Para acessar o código-fonte do projeto, siga os passos abaixo:
 
