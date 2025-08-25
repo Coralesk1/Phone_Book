@@ -5,7 +5,7 @@ O projeto é estruturado seguindo a arquitetura MVC (Model-View-Controller), gar
 
 O principal objetivo do projeto é não apenas fornecer uma ferramenta funcional de gerenciamento de contatos, mas também servir como um exercício completo para consolidar conhecimentos em desenvolvimento backend, práticas de APIs REST, integração com banco de dados MySQL e implementação de boas práticas de programação.
 ## Status do projeto
-> :construction: Projeto em construção :construction:
+> :construction: Projeto em construção :construction: - Estou fazendo o frontend
 
 ## Funcionalidades
 - `Funcionalidade 1`: Adicionar novos contatos
