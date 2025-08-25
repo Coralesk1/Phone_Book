@@ -83,5 +83,5 @@ mvn spring-boot:run
 ## Pessoas Desenvolvedoras do Projeto
 - Gustavo Coraleski
 # Autores
-| [<img src="https://avatars.githubusercontent.com/u/157764486?s=400&u=a693858248f7924da309f21ad06e28cd8967742a&v=4" width=115><br><sub>Gustavo Coraleski</sub>](https://github.com/Coralesk1) |
+[<img src="https://avatars.githubusercontent.com/u/157764486?s=400&u=a693858248f7924da309f21ad06e28cd8967742a&v=4" width=115><br><sub>Gustavo Coraleski</sub>](https://github.com/Coralesk1)
 
