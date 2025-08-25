@@ -68,7 +68,8 @@ mvn clean install
 mvn spring-boot:run
 ```
 - Utilize um cliente HTTP (como Postman) para ultilizar o projeto, Path (http://localhost:8080/api/contacts/).
-## Tecnologias utilizadas
+# 🛠️ Tecnologias utilizadas
+## Backend
 - **Java**
 - **MySQL**
 - **Spring Boot**
@@ -78,7 +79,6 @@ mvn spring-boot:run
 - **InteliJ IDEA** – Para desenvolvimento, execução e depuração da aplicação.
 - **HeidiSQL** (para visualização dos dados)
 - **Postman** (para testes da API)
-
 
 ## Pessoas Desenvolvedoras do Projeto
 - Gustavo Coraleski
