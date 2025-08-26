@@ -1,15 +1,18 @@
-.title { /*  font-family:  'Indie Flower', serif; fonte dos textos */
+.title { 
     font-size: 65px;
     font-family:  'Rock Salt', cursive;
     width: 530px;
     margin: 0 auto; 
 }
 body {
+    background-image: url('templates/papelVelho.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; 
     padding: 0;
     margin: 0;
     font-family:  'Indie Flower', serif; 
     background-color: antiquewhite;
-    border: 2px solid red;
 }
 .options {
     display: flex;
@@ -17,17 +20,45 @@ body {
     gap: 30px;
 }
 .div-form-option {
-    background-color: aquamarine;
     width: 300px;
     height: auto;
-    margin-left: 180px;
+    margin-left: 120px;
+    margin-top: 40px;    
 }
 .button-options {
     padding: 15px;
     width: auto;
     font-size: 20px;
-    border-radius: 10px;
-    border-color: blue;
-    border-style: dashed;
+    border-radius: 7px;
+    border: 2px dashed rgb(101, 67, 33); 
+    background-color: rgb(205, 133, 63); 
+    color: white; 
+    transition: all 0.2s ease; 
+    box-shadow: 0 0 8px #000000;
+}
+
+.button-options:hover {
+    background-color: rgb(160, 82, 45); 
+    transform: scale(1.05); 
+}
+
+.button-options:focus {
+    background-color: rgb(139, 69, 19); 
+    outline: none; 
+}
+.caderno {
+    background-color: rgb(243, 243, 243);
+    width: 550px;
+    height: 470px;
+    margin-left: 700px;
+    position: absolute;
+    top: 160px;
+    border-radius: 10px; 
+}
+.arame {
+    position: absolute;
+    top: 150px;
+    margin-left: 670px;
+    z-index: 2;
 }
 
