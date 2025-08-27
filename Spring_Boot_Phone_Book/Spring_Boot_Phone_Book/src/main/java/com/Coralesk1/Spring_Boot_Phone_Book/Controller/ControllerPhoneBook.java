@@ -5,20 +5,17 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Service.ServicePhoneBook;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
 @RestController
 @RequestMapping("/api/contacts")
 public class ControllerPhoneBook {
@@ -28,18 +25,13 @@ public class ControllerPhoneBook {
 
     // Lista todos contatos
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
-    public CollectionModel<EntityModel<ModelPhoneBook>> list() {
+    public Object list() {
         List<ModelPhoneBook> contacts = servicePhoneBook.listContact();
-
-        List<EntityModel<ModelPhoneBook>> contactModels = new ArrayList<>();
-        for (ModelPhoneBook contact : contacts) {
-            EntityModel<ModelPhoneBook> model = EntityModel.of(contact);
-            extracted(contact.getId(), model);
-            contactModels.add(model);
+        if (contacts.isEmpty()) {
+            // Retorna apenas mensagem
+            return new ModelMenssageOK("Data is empty !");
         }
-
-        return CollectionModel.of(contactModels,
-                linkTo(methodOn(ControllerPhoneBook.class).list()).withSelfRel());
+        return contacts;
     }
 
     //cria um contato
@@ -58,7 +50,6 @@ public class ControllerPhoneBook {
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
         if (contact.isPresent()) {
             ModelPhoneBook mpb = contact.get();
-            mpb.setBirthDay(new Date());
 
             EntityModel<ModelPhoneBook> model = EntityModel.of(mpb);
             //chamada do metodo dos links

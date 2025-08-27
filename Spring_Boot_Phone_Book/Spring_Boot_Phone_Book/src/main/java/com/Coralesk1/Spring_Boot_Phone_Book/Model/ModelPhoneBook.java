@@ -9,9 +9,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.hateoas.RepresentationModel;
-
 import java.io.Serializable;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "contact") //nome da tabela no banco
@@ -52,9 +51,6 @@ public class ModelPhoneBook extends RepresentationModel<ModelPhoneBook> implemen
     @Column(name = "ddd", nullable = false, length = 2)
     @JsonProperty("ddd")
     private String ddd;
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date birthDay;
 
     public ModelPhoneBook(String firstName, String lastName, String email, String numPhone, String ddd) {
         this.firstName = firstName;
@@ -101,11 +97,4 @@ public class ModelPhoneBook extends RepresentationModel<ModelPhoneBook> implemen
         Id = id;
     }
 
-    public Date getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
 }

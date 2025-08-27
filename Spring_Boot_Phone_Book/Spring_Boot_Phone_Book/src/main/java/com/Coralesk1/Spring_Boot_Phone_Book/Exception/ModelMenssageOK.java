@@ -7,8 +7,11 @@ public class ModelMenssageOK {
     public ModelMenssageOK(String menssage){
         this.menssage = menssage;
     }
-    public String getmensage() {
+    public String getMenssage() {
         return menssage;
+    }
+    public void setMenssage(String menssage) {
+        this.menssage = menssage;
     }
 
 }

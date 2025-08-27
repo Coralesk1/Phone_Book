@@ -11,6 +11,7 @@ body {
     background-size: cover; 
     padding: 0;
     margin: 0;
+    font-size: 12px;
     font-family:  'Indie Flower', serif; 
     background-color: antiquewhite;
 }
@@ -28,25 +29,25 @@ body {
 .button-options {
     padding: 15px;
     width: auto;
-    font-size: 20px;
+    font-size: 21px;
     border-radius: 7px;
     border: 2px dashed rgb(101, 67, 33); 
     background-color: rgb(205, 133, 63); 
     color: white; 
     transition: all 0.2s ease; 
     box-shadow: 0 0 8px #000000;
+    font-family: 'Times New Roman', Times, serif;
+    
 }
-
 .button-options:hover {
     background-color: rgb(160, 82, 45); 
     transform: scale(1.05); 
 }
-
 .button-options:focus {
     background-color: rgb(139, 69, 19); 
     outline: none; 
 }
-.caderno {
+.notebook {
     background-color: rgb(243, 243, 243);
     width: 550px;
     height: 470px;
@@ -54,11 +55,62 @@ body {
     position: absolute;
     top: 160px;
     border-radius: 10px; 
+    padding-left: 40px;
+    box-shadow:6px 5px 10px #000000;
 }
-.arame {
+.arame1 {
     position: absolute;
     top: 150px;
     margin-left: 670px;
     z-index: 2;
 }
+.arame2 {
+    position: absolute;
+    top: 210px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame3 {
+    position: absolute;
+    top: 270px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame4 {
+    position: absolute;
+    top: 330px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame5 {
+    position: absolute;
+    top: 390px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame6 {
+    position: absolute;
+    top: 450px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame7 {
+    position: absolute;
+    top: 510px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.arame8 {
+    position: absolute;
+    top: 570px;
+    margin-left: 670px;
+    z-index: 2;
+}
+.lapiz {
+    position: absolute;
+    top: 41px;
+    margin-left: 356px;
+}
+
+
 
