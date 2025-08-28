@@ -7,32 +7,30 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
-
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    
     <h1 class="title">Phone Book</h1>
     <div class="div-form-option">
-        <form class="options">
-            <button class="button-options">Add new contacts</button>
-            <button onclick="listAllContacts()" class="button-options">List all contacts</button>
-            <button class="button-options">List specific contacts</button>
-            <button class="button-options">Edit contacts</button>
-            <button class="button-options">Remove contacts</button>
+        <form class="options" onsubmit="return false;">
+            <button type="button" class="button-options">Add new contacts</button>
+            <button type="button" onclick="listAllContacts()" class="button-options">List all contacts</button>
+            <button type="button" class="button-options">List specific contacts</button>
+            <button type="button" class="button-options">Edit contacts</button>
+            <button type="button" class="button-options">Remove contacts</button>
         </form>
     </div>
     <div class="notebook">
     </div>
-    <!-- Imagens -->
-    <img src="templates/Lapizf.png" class="lapiz">
-    <img src="templates/arame-re.png" class="arame1">
-    <img src="templates/arame-re.png" class="arame2">
-    <img src="templates/arame-re.png" class="arame3">
-    <img src="templates/arame-re.png" class="arame4">
-    <img src="templates/arame-re.png" class="arame5">
-    <img src="templates/arame-re.png" class="arame6">
-    <img src="templates/arame-re.png" class="arame7">
-    <img src="templates/arame-re.png" class="arame8">
+    <img src="templates/Lapizf.png" class="lapiz" alt="Lápis">
+    <img src="templates/arame-re.png" class="arame1" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame2" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame3" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame4" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame5" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame6" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame7" alt="Espiral do caderno">
+    <img src="templates/arame-re.png" class="arame8" alt="Espiral do caderno">
     <script src="index.js"></script>
 </body>
 </html>
