@@ -11,7 +11,7 @@ body {
     background-size: cover; 
     padding: 0;
     margin: 0;
-    font-size: 12px;
+    font-size: 16px; /* fonte geral  */
     font-family:  'Indie Flower', serif; 
     background-color: antiquewhite;
 }
@@ -48,7 +48,29 @@ body {
     outline: none; 
 }
 .notebook {
-    background-color: rgb(243, 243, 243);
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+.notebook table {
+    width: 100%;
+    border-collapse: collapse; /* bordas contínuas */
+}
+.notebook th { /* cabeçalho */
+    border: 1px solid #000; 
+    padding: 5px;           
+    text-align: center;
+}
+.notebook th {
+    background-color: #ddd; 
+}
+.notebook td { /* linhas/corpo */
+    border: 1px solid #000; 
+    padding: 5px;           
+    text-align: left;
+}
+.div-notebook {
+    background-color: rgb(223, 223, 223);
     width: 550px;
     height: 470px;
     margin-left: 700px;
@@ -57,7 +79,61 @@ body {
     border-radius: 10px; 
     padding-left: 40px;
     box-shadow:6px 5px 10px #000000;
+    overflow: auto;
 }
+.div-inputs-add {
+    background-color: rgb(223, 223, 223);
+    gap: 10px;
+    width: 300px;
+    height: auto;
+    top: 23px;
+    position: absolute;
+
+}
+.input-add {
+    gap: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    font-size: 19px;
+    border: none;
+    font-family: 'Indie Flower', serif; 
+    padding-left: 120px;
+    background-color: rgb(240, 240, 240);
+}
+.label-add {
+    font-size: 21px;
+}
+.btn-save {
+    margin-top: 360px;
+    margin-left: 385px;
+    border-radius: 4px;
+    font-size: 20px;
+    padding: 12px 30px;
+    font-family: 'Indie Flower', serif; 
+    cursor: pointer;
+    border: 2px #000;
+    color: rgb(0, 0, 0);
+    background-color: rgb(201, 201, 201);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .arame1 {
     position: absolute;
     top: 150px;

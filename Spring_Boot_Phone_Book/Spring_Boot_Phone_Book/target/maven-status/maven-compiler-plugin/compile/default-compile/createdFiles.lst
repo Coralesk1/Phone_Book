@@ -1,9 +1,4 @@
 com\Coralesk1\Spring_Boot_Phone_Book\Controller\ControllerPhoneBook.class
-com\Coralesk1\Spring_Boot_Phone_Book\Exception\ErroException.class
-com\Coralesk1\Spring_Boot_Phone_Book\Exception\ErroResponse.class
-com\Coralesk1\Spring_Boot_Phone_Book\Repository\ContactRepository.class
 com\Coralesk1\Spring_Boot_Phone_Book\Model\ModelPhoneBook.class
-com\Coralesk1\Spring_Boot_Phone_Book\Model\ModelMenssageOK.class
-com\Coralesk1\Spring_Boot_Phone_Book\Service\ContactService.class
 com\Coralesk1\Spring_Boot_Phone_Book\SpringBootPhoneBookApplication.class
 com\Coralesk1\Spring_Boot_Phone_Book\Exception\GlobalExceptionHandler.class

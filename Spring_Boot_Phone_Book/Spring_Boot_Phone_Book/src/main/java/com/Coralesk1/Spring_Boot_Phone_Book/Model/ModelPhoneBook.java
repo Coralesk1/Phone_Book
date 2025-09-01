@@ -96,5 +96,17 @@ public class ModelPhoneBook extends RepresentationModel<ModelPhoneBook> implemen
     public void setId(Long id) {
         Id = id;
     }
+    @Override
+    public @NotNull String toString() {
+        return "ModelPhoneBook {" +
+                "id=" + Id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", numPhone='" + numPhone + '\'' +
+                ", ddd='" + ddd + '\'' +
+                '}';
+    }
+
 
 }
