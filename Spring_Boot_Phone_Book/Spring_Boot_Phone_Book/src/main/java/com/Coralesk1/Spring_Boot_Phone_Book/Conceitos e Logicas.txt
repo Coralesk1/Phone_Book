@@ -1,0 +1,19 @@
+#(ResponseEntity<T>)#
+- usado para representar a resposta HTTP completa um endpoint da API.
+ele define o corpo da resposta e permite controlar os Status HTTP
+
+#(EntityModel<T>)#
+- é uma class do Spring HATEOAS usada para envolver um único recurso (um objeto) e adicionar links HATEOAS
+ a ele.
+
+#(List<t>)#
+- sendo "t" os tipos dos elemnetos da lista
+é um tipo de coleção do Java que representa uma lista de elementos em ordem
+
+#(fluxo de excução do Endpoint postmapping)#
+
+JSON -> @RequestBody (criar uma instância do ModelPhoneBook e usa um construtor vazio. Depois, ele vai
+preencher cada atributo usando os nomes do JSON e os setters correspondentes)
+-> new ModelPhoneBook() -> setFirstName(...) ... -> contact pronto e pasaado para o metodo
+createContact(contact).
+
