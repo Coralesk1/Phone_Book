@@ -89,12 +89,13 @@ public class ModelPhoneBook extends RepresentationModel<ModelPhoneBook> implemen
     public void setDdd(String ddd) {
         this.ddd = ddd;
     }
-    public Long getId() {
+    /*public Long getId() {
         return Id;
     }
     public void setId(Long id) {
         Id = id;
-    }
+    }*/
+
     @Override
     public @NotNull String toString() {
         return "ModelPhoneBook {" +

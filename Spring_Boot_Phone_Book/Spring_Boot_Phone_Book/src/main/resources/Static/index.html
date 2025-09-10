@@ -11,22 +11,27 @@
 </head>
 <body>
     <h1 class="title">Phone Book</h1>
+    <!-- Options -->
     <div class="div-form-option">
         <form class="options" onsubmit="return false;">
             <button type="button" onclick="addNewContact()" class="button-options">Add new contacts</button>
             <button type="button" onclick="listAllContacts()" class="button-options">List all contacts</button>
-            <button type="button" class="button-options">List specific contacts</button>
+            <button type="button" onclick="ListSpecificContact()" class="button-options">List specific contacts</button>
             <button type="button" class="button-options">Edit contacts</button>
             <button type="button" class="button-options">Remove contacts</button>
         </form>
     </div>
+
+    <!-- Exits -->
     <div class="div-add" style="display: none;">
     </div>
-
     <div class="div-list">  
         <table class="notebook"></table>
     </div>
+    <div class="div-Specific-list">
+    </div>
 
+    <!-- Image -->
     <img src="templates/Lapizf.png" class="lapiz" alt="Lápis">
     <img src="templates/arame-re.png" class="arame1" alt="Espiral do caderno">
     <img src="templates/arame-re.png" class="arame2" alt="Espiral do caderno">

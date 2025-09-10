@@ -17,3 +17,5 @@ preencher cada atributo usando os nomes do JSON e os setters correspondentes)
 -> new ModelPhoneBook() -> setFirstName(...) ... -> contact pronto e pasaado para o metodo
 createContact(contact).
 
+#(Payload)#
+- Um payload em contexto de API, refere-se aos dados efetivamente enviados ou recebidos.

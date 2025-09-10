@@ -1,12 +1,11 @@
 function addNewContact() {
-  console.log("adicionar contato");
 
   // mostra o form e esconde a lista
   document.querySelector(".div-add").style.display = "block";
   document.querySelector(".div-list").style.display = "none";
 
-  const addContainer = document.querySelector(".div-add");
-  addContainer.innerHTML = ''; // limpa antes de recriar
+  const divAdd = document.querySelector(".div-add");
+  divAdd.innerHTML = ''; // limpa antes de recriar
 
   const div = document.createElement("div");
   div.classList.add("div-inputs-add", "div-bnt");
@@ -27,76 +26,51 @@ function addNewContact() {
 
       <label for="ddd" class="label-add">DDD</label>
       <input type="text" id="ddd" class="input-add"><br>
+
+      <button class="btn-save" id="bnt-save">Save</button>
     </div>
   `;
   
-    div.innerHTML += `<button class="btn-save">Save</button>`;
-    addContainer.appendChild(div);
+  divAdd.appendChild(div);
 
-    const inputs = div.querySelectorAll("input");
+  const btn = document.getElementById("bnt-save");
 
-    // pegar valor de um input
-    const firstNameInput = document.getElementById("firstName");
-    firstNameInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        console.log(firstNameInput.value);
-    }
+  // pegar valor de um input
+  const firstNameInput = document.getElementById("firstName");
+  const lastNameInput = document.getElementById("lastName");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+  const dddInput = document.getElementById("ddd");
+  
+  btn.addEventListener("click", () => {
+    
+    const dataContact = {
+    firstName: firstNameInput.value,
+    lastName: lastNameInput.value,
+    email: emailInput.value,
+    numPhone: phoneInput.value,
+    ddd: dddInput.value
+    };
+
+    fetch("http://localhost:8080/api/contacts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dataContact)
+    
     });
-
-    const lastNameInput = document.getElementById("lastName");
-    lastNameInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        console.log(lastNameInput.value);
-    }
-    });
-
-    const emailInput = document.getElementById("email");
-    emailInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        console.log(emailInput.value);
-    }
-    });
-
-    const phoneInput = document.getElementById("phone");
-    phoneInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        console.log(phoneInput.value);
-    }
-    });
-
-    const dddInput = document.getElementById("ddd");
-    dddInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        console.log(dddInput.value);
-    }
-    });
-
-    /* dddInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        const dataContact = {
-        firstName: firstNameInput.value,
-        lastName: lastNameInput.value,
-        email: emailInput.value,
-        numPhone: phoneInput.value,
-        ddd: dddInput.value
-        };
-
-        const dataJson = JSON.stringify(dataContact);
-        console.log(dataJson);
-    }
-    }); */ //ESTUDAR ISSO AQUI 
-
+  }); 
 }
 
 async function listAllContacts() {
-  console.log("entrei na chamada da função");
-
+ 
   // mostra lista e esconde o form
   document.querySelector(".div-add").style.display = "none";
   document.querySelector(".div-list").style.display = "block";
 
-  const notebook = document.querySelector(".notebook");
-  notebook.innerHTML = ''; // limpa tabela antes de renderizar
+  const divList = document.querySelector(".notebook");
+  divList.innerHTML = ''; // limpa tabela antes de renderizar
 
   try {
     const response = await fetch("http://localhost:8080/api/contacts");
@@ -105,7 +79,7 @@ async function listAllContacts() {
     console.log(Array.isArray(data));
 
     if (data.message) { // corrigido 'menssage' para 'message'
-      notebook.innerHTML = `<h2>Banco vazio!</h2>`;
+      divList.innerHTML = `<h2>Banco vazio!</h2>`;
       return;
     }
 
@@ -136,10 +110,28 @@ async function listAllContacts() {
         table.appendChild(contactData);
       });
 
-      notebook.appendChild(table);
+      divList.appendChild(table);
     }
   } catch (error) {
-    notebook.innerHTML = `<h2>Erro de conexão</h2>`;
+    divList.innerHTML = `<h2>Erro de conexão</h2>`;
     console.error(error);
   }
 }
+
+function ListSpecificContact(){
+  console.log("entrei na funcao");
+  const divSList = document.querySelector(".div-Specific-list");
+  const div = document.createElement("div");
+  div.classList.add("div-input-id");
+
+
+  div.innerHTML = `
+    <div class="div-input-id">
+      <label class="label-id">Choise the id</label>
+      <input type="Number" class="input-id">
+    </div>
+  
+  `;
+  divSList.appendChild(div);
+
+};

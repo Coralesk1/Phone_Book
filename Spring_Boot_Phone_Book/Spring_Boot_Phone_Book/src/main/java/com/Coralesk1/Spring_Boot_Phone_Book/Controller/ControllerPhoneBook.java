@@ -43,17 +43,14 @@ public class ControllerPhoneBook {
 
     // Busca contato por ID
     @GetMapping("/{id}")
-    public ResponseEntity<EntityModel<ModelPhoneBook>> getById(@PathVariable Long id) {
+    public ResponseEntity<ModelPhoneBook> getById(@PathVariable Long id) {
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
 
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
         if (contact.isPresent()) {
-            ModelPhoneBook mpb = contact.get();
-
-            EntityModel<ModelPhoneBook> model = EntityModel.of(mpb);
-            extracted(id, model);
+            ModelPhoneBook model = contact.get();
 
             return ResponseEntity.ok(model);
         }
