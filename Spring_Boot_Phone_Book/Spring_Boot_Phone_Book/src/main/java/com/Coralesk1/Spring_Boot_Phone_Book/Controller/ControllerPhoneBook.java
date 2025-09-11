@@ -5,13 +5,11 @@ import com.Coralesk1.Spring_Boot_Phone_Book.Model.ModelPhoneBook;
 import com.Coralesk1.Spring_Boot_Phone_Book.Service.ServicePhoneBook;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:5500"})
 @RestController
@@ -29,8 +27,9 @@ public class ControllerPhoneBook {
             return new ModelMenssageOK("Data is empty !");
         }
         //for each
-        for (ModelPhoneBook contact : contacts){ //para cada elemento ModelPhoneBook dentro da lista contacts
-            System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName() + ", Phone: " + contact.getDdd() + " " + contact.getNumPhone());
+        for (ModelPhoneBook contact : contacts) {
+            System.out.println("Name: " + contact.getFirstName() + " " + contact.getLastName() +
+                    ", Phone: " + contact.getDdd() + " " + contact.getNumPhone());
         }
         return contacts;
     }
@@ -49,12 +48,8 @@ public class ControllerPhoneBook {
         }
 
         Optional<ModelPhoneBook> contact = servicePhoneBook.getContactById(id);
-        if (contact.isPresent()) {
-            ModelPhoneBook model = contact.get();
-
-            return ResponseEntity.ok(model);
-        }
-        return ResponseEntity.notFound().build();
+        return contact.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Deleta o contato pelo id
@@ -69,37 +64,12 @@ public class ControllerPhoneBook {
 
     // Edita um contato pelo id
     @PutMapping("/{id}")
-    public ResponseEntity<EntityModel<ModelPhoneBook>> update(@PathVariable Long id, @RequestBody @Valid ModelPhoneBook contact) {
+    public ResponseEntity<ModelPhoneBook> update(@PathVariable Long id,
+                                                 @RequestBody @Valid ModelPhoneBook contact) {
         if (!servicePhoneBook.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
-        EntityModel<ModelPhoneBook> model = EntityModel.of(contact);
-
-        extracted(id, model);
         servicePhoneBook.updateContact(id, contact);
-        return ResponseEntity.ok(model);
-    }
-
-    // Links HATEOAS
-    private static void extracted(Long id, EntityModel<ModelPhoneBook> model) {
-        model.add(linkTo(methodOn(ControllerPhoneBook.class).getById(id))
-                .withSelfRel()
-                .withType("GET"));
-
-        model.add(linkTo(methodOn(ControllerPhoneBook.class).list())
-                .withRel("all-contacts")
-                .withType("GET"));
-
-        model.add(linkTo(methodOn(ControllerPhoneBook.class).create(null))
-                .withRel("create-contact")
-                .withType("POST"));
-
-        model.add(linkTo(methodOn(ControllerPhoneBook.class).update(id, null))
-                .withRel("update-contact")
-                .withType("PUT"));
-
-        model.add(linkTo(methodOn(ControllerPhoneBook.class).delete(id))
-                .withRel("delete-contact")
-                .withType("DELETE"));
+        return ResponseEntity.ok(contact);
     }
 }

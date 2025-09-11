@@ -1,5 +1,5 @@
 function addNewContact() {
-
+  console.log("gya")
   // mostra o form e esconde a lista
   document.querySelector(".div-add").style.display = "block";
   document.querySelector(".div-list").style.display = "none";
@@ -121,9 +121,10 @@ async function listAllContacts() {
 function ListSpecificContact(){
   console.log("entrei na funcao");
   const divSList = document.querySelector(".div-Specific-list");
+  divSList.innerHTML = '';
+
   const div = document.createElement("div");
   div.classList.add("div-input-id");
-
 
   div.innerHTML = `
     <div class="div-input-id">
@@ -133,5 +134,6 @@ function ListSpecificContact(){
   
   `;
   divSList.appendChild(div);
+ 
 
 };

@@ -118,6 +118,32 @@ body {
     left: 436px;
     background-color: rgb(201, 201, 201);
 }
+/* .div-input-id {
+   background-color: rgb(223, 223, 223);
+    width: 550px;
+    height: 430px;
+    margin-left: 700px;
+    position: absolute;
+    top: 160px;
+    border-radius: 10px; 
+    padding: 20px;
+    box-shadow: 6px 5px 10px #000000;
+    overflow: auto; 
+    display: none;
+}
+.input-id {
+    margin-left: 14px;
+    margin-top: 1px;
+    width: 320px;
+}
+.label-id {
+    font-size: 21px;
+    display: block;
+    margin-top: 4px;
+} */
+
+
+
 .arame1, .arame2, .arame3, .arame4,
 .arame5, .arame6, .arame7, .arame8 {
     position: absolute;
