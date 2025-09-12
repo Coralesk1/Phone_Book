@@ -3,6 +3,8 @@ function addNewContact() {
   // mostra o form e esconde a lista
   document.querySelector(".div-add").style.display = "block";
   document.querySelector(".div-list").style.display = "none";
+  document.querySelector(".div-Specific-list").style.display = "none";
+  
 
   const divAdd = document.querySelector(".div-add");
   divAdd.innerHTML = ''; // limpa antes de recriar
@@ -66,8 +68,9 @@ function addNewContact() {
 async function listAllContacts() {
  
   // mostra lista e esconde o form
-  document.querySelector(".div-add").style.display = "none";
   document.querySelector(".div-list").style.display = "block";
+  document.querySelector(".div-Specific-list").style.display = "none";
+  document.querySelector(".div-add").style.display = "none";
 
   const divList = document.querySelector(".notebook");
   divList.innerHTML = ''; // limpa tabela antes de renderizar
@@ -113,12 +116,17 @@ async function listAllContacts() {
       divList.appendChild(table);
     }
   } catch (error) {
-    divList.innerHTML = `<h2>Erro de conexão</h2>`;
+    divList.innerHTML = `<h2>Erro de conexão com o servidor</h2>`;
     console.error(error);
   }
 }
 
 function ListSpecificContact(){
+
+  document.querySelector(".div-list").style.display = "none";
+  document.querySelector(".div-Specific-list").style.display = "block";
+  document.querySelector(".div-add").style.display = "none";
+
   console.log("entrei na funcao");
   const divSList = document.querySelector(".div-Specific-list");
   divSList.innerHTML = '';
@@ -128,12 +136,19 @@ function ListSpecificContact(){
 
   div.innerHTML = `
     <div class="div-input-id">
-      <label class="label-id">Choise the id</label>
-      <input type="Number" class="input-id">
+      <label class="label-id">What is the Id</label>
+      <input id="valueInput" type="Number" class="input-id">
     </div>
   
   `;
+  
+  /* try {
+    const response = await fetch('http://localhost:8080/api/contacts/${valueInput}');
+  } */
+
   divSList.appendChild(div);
+  const valueInput = document.getElementById("valueInput").value;
+  console.log(document.getElementById("valueInput").value);
  
 
 };
