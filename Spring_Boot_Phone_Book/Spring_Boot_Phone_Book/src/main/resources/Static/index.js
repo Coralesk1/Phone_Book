@@ -137,18 +137,20 @@ function ListSpecificContact(){
   div.innerHTML = `
     <div class="div-input-id">
       <label class="label-id">What is the Id</label>
-      <input id="valueInput" type="Number" class="input-id">
+      <input id="valueInput" type="number" class="input-id">
     </div>
   
   `;
   
-  /* try {
+/*   try {
     const response = await fetch('http://localhost:8080/api/contacts/${valueInput}');
+
   } */
-
+  
   divSList.appendChild(div);
-  const valueInput = document.getElementById("valueInput").value;
-  console.log(document.getElementById("valueInput").value);
- 
-
+  document.getElementById("valueInput").addEventListener("keydown", e => {
+    if (e.key == "Enter")
+      console.log(e.target.value);
+  })
 };
+
