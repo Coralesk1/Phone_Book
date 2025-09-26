@@ -121,36 +121,71 @@ async function listAllContacts() {
   }
 }
 
-function ListSpecificContact(){
-
+async function ListSpecificContact() {
+  // Oculta e mostra as seções
   document.querySelector(".div-list").style.display = "none";
   document.querySelector(".div-Specific-list").style.display = "block";
   document.querySelector(".div-add").style.display = "none";
 
   console.log("entrei na funcao");
-  const divSList = document.querySelector(".div-Specific-list");
-  divSList.innerHTML = '';
 
-  const div = document.createElement("div");
-  div.classList.add("div-input-id");
-
-  div.innerHTML = `
-    <div class="div-input-id">
-      <label class="label-id">What is the Id</label>
-      <input id="valueInput" type="number" class="input-id">
-    </div>
-  
+  // Div para input/label
+  const inputDivContainer = document.querySelector(".notebookSpecific");
+  inputDivContainer.innerHTML = '';
+  const inputDiv = document.createElement("div");
+  inputDiv.classList.add("div-input-id");
+  inputDiv.innerHTML = `
+    <label class="label-id">What is the Id</label>
+    <input id="valueInput" type="number" class="input-id">
   `;
-  
-/*   try {
-    const response = await fetch('http://localhost:8080/api/contacts/${valueInput}');
+  inputDivContainer.appendChild(inputDiv);
 
-  } */
-  
-  divSList.appendChild(div);
-  document.getElementById("valueInput").addEventListener("keydown", e => {
-    if (e.key == "Enter")
-      console.log(e.target.value);
-  })
-};
+  // Div para a tabela
+  const tableDiv = document.querySelector(".div-table");
+  tableDiv.innerHTML = ''; // limpa tabela antiga
 
+  const valueInput = document.getElementById("valueInput");
+
+  valueInput.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter") {
+      const id = e.target.value;
+      console.log("ID digitado:", id);
+
+      try {
+        const response = await fetch(`http://localhost:8080/api/contacts/${id}`);
+        const data = await response.json();
+        console.log(data);
+
+        // Limpa a div da tabela antes de adicionar a nova
+        tableDiv.innerHTML = '';
+
+        const table = document.createElement("table");
+        const header = document.createElement("tr");
+        header.innerHTML = `
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>DDD</th>
+        `;
+        table.appendChild(header);
+
+        const contactData = document.createElement("tr");
+        contactData.innerHTML = `
+          <td>${data.firstName}</td>
+          <td>${data.lastName}</td>
+          <td>${data.email}</td>
+          <td>${data.numPhone}</td>
+          <td>${data.ddd}</td>
+        `;
+        table.appendChild(contactData);
+
+        tableDiv.appendChild(table);
+
+      } catch (error) {
+        tableDiv.innerHTML = `<h2>This record does not exist</h2>`;
+        console.error(error);
+      }
+    }
+  });
+}
